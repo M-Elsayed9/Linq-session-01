@@ -49,7 +49,7 @@ namespace Demo
 
             // 2. Query Syntax 
 
-            List<int> Numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            //List<int> Numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
             // 3. select *
             // 1. from Numbers N
             // 2. Where N % 2 == 1
@@ -57,20 +57,54 @@ namespace Demo
             // must begin with FROM Keyword
             // Must end with SELECT or GROUPBY
 
-            var OddNumbers = from N in Numbers
-                             where N % 2 == 1
-                             select N;
+            //var OddNumbers = from N in Numbers
+            //                 where N % 2 == 1
+            //                 select N;
 
-            foreach (int item in OddNumbers)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (int item in OddNumbers)
+            //{
+            //    Console.WriteLine(item);
+            //}
             //  2.1 Query Syntax is a set of keywords that are used to write queries
             //  2.2 Query Syntax is converted to Fluent Syntax by the compiler
             //  2.3 Query Syntax is more readable than Fluent Syntax  
             // 2.4 Query Syntax is not used in all LINQ operators
 
 
+
+            #endregion
+
+            #region LINQ Execution ways [Elements Operators, Casting Opators, Aggregate Operators]
+
+            #region Deferred Execution latest version of data
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //var OddNumbers = Numbers.Where(N => N % 2 == 1);
+            ////Where is executed with deferred execution
+
+            //Numbers.AddRange(new List<int> { 11, 12, 13, 14, 15 });
+
+            //foreach (int item in OddNumbers)
+            //{
+            //    Console.WriteLine(item); // 1, 3, 5, 7, 9, 11, 13, 15
+            //} 
+            #endregion
+
+            #region Immediate Execution
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            //var OddNumbers = Numbers.Where(N => N % 2 == 1).ToList();
+            //// Where is executed with deferred execution
+            //// ToList is executed
+
+            //Numbers.AddRange(new List<int> { 11, 12, 13, 14, 15 });
+
+            //foreach (int item in OddNumbers)
+            //{
+            //    Console.WriteLine(item); // 1, 3, 5, 7, 9, 11, 13, 15
+            //}
+
+            #endregion
 
             #endregion
 
