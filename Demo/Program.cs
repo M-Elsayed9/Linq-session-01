@@ -74,6 +74,8 @@ namespace Demo
 
             #endregion
 
+            #endregion
+
             #region LINQ Execution ways [Elements Operators, Casting Opators, Aggregate Operators]
 
             #region Deferred Execution latest version of data
@@ -108,8 +110,14 @@ namespace Demo
 
             #endregion
 
-            #endregion
+            #region Data SetUp
 
+            //Console.WriteLine(ListGenerator.ProductsList[0]);
+
+            //Console.WriteLine(ListGenerator.CustomersList[0]);
+
+
+            #endregion        
         }
     }
 }
