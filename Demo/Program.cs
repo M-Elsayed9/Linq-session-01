@@ -117,7 +117,41 @@ namespace Demo
             //Console.WriteLine(ListGenerator.CustomersList[0]);
 
 
-            #endregion        
+            #endregion
+
+            #region Filteration Operator
+
+            // get products that are out of stock
+            //Fluent Syntax
+            var Result = ListGenerator.ProductsList.Where(p => p.UnitsInStock == 0);
+
+            // query syntax
+            Result = from p in ListGenerator.ProductsList
+                     where p.UnitsInStock == 0
+                     select p;
+
+            foreach (var item in Result)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            // get products that are in stock
+            // Fluent Syntax
+            Result = ListGenerator.ProductsList.Where(p => p.UnitsInStock > 0 && p.Category == "Meat/Polutry");
+
+            // Query Syntax
+            Result = from p in ListGenerator.ProductsList
+                     where p.UnitsInStock > 0 && p.Category == "Meat/Polutry"
+                     select p;
+
+
+            // Indexed where
+            // get products that are out of stock in the first 10 products
+
+            Result = ListGenerator.ProductsList.Where((p, index) => p.UnitsInStock == 0 && index < 10);
+            // indexed qhere valid only with fluent syntax and not query syntax
+            #endregion
         }
     }
 }
