@@ -221,8 +221,64 @@ namespace Demo
             //where p.UnitsInStock > 0
             //select new { ID = p.ProductID, Name = p.ProductName, OldPrice = p.UnitPrice, DiscountedPrice = p.UnitPrice * 0.9m };
 
-            var Result = ListGenerator.ProductsList.Where(P => P.UnitsInStock > 0).Select((P, I) => new {Index = I, Name = P.ProductName});
+            //var Result = ListGenerator.ProductsList.Where(P => P.UnitsInStock > 0).Select((P, I) => new {Index = I, Name = P.ProductName});
             // indexed select valid only with fluent syntax and not query syntax
+            #endregion
+
+            #region Ordering Operators [Ascending, Descending, reverse, ThenBy, ThenByDescending
+
+            // Order products by price asc
+
+            // Fluent Syntax
+            //var result = ListGenerator.ProductsList.OrderBy(p => p.UnitPrice);
+
+            //foreach (var item in result) {
+            //    Console.WriteLine(item);
+            //}
+
+            //// Query Syntax
+            //result = from p in ListGenerator.ProductsList
+            //         orderby p.UnitPrice
+            //         select p;
+
+
+
+            // Order products by price desc
+            // Fluent Syntax
+
+            //result = ListGenerator.ProductsList.OrderByDescending(p => p.UnitPrice);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //// Query Syntax
+            //result = from p in ListGenerator.ProductsList
+            //         orderby p.UnitPrice descending
+            //         select p;
+
+            // Order by price asc and number of items in stocl
+
+            // Fluent Syntax
+            //result = ListGenerator.ProductsList.OrderBy(p => p.UnitPrice).ThenBy(p => p.UnitsInStock);
+            // result = ListGenerator.ProductsList.OrderBy(p => p.UnitPrice).ThenByDescending(p => p.UnitsInStock);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            // Query Syntax
+
+            //result = from p in ListGenerator.ProductsList
+            //         orderby p.UnitPrice, p.UnitsInStock
+            //         select p;
+
+            // reverse the order of products
+            // Fluent Syntax
+            //var result = ListGenerator.ProductsList.Where(p => p.UnitsInStock == 0).Reverse();
+
             #endregion
         }
     }
