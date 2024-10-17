@@ -1,4 +1,6 @@
-﻿using System.Net.Http.Headers;
+﻿using Demo.Data;
+using System.Net.Http.Headers;
+
 
 namespace Demo
 {
@@ -123,34 +125,104 @@ namespace Demo
 
             // get products that are out of stock
             //Fluent Syntax
-            var Result = ListGenerator.ProductsList.Where(p => p.UnitsInStock == 0);
+            //var Result = ListGenerator.ProductsList.Where(p => p.UnitsInStock == 0);
 
             // query syntax
-            Result = from p in ListGenerator.ProductsList
-                     where p.UnitsInStock == 0
-                     select p;
+            //Result = from p in ListGenerator.ProductsList
+            //         where p.UnitsInStock == 0
+            //         select p;
 
-            foreach (var item in Result)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
 
             // get products that are in stock
             // Fluent Syntax
-            Result = ListGenerator.ProductsList.Where(p => p.UnitsInStock > 0 && p.Category == "Meat/Polutry");
+            //Result = ListGenerator.ProductsList.Where(p => p.UnitsInStock > 0 && p.Category == "Meat/Polutry");
 
             // Query Syntax
-            Result = from p in ListGenerator.ProductsList
-                     where p.UnitsInStock > 0 && p.Category == "Meat/Polutry"
-                     select p;
+            //Result = from p in ListGenerator.ProductsList
+            //         where p.UnitsInStock > 0 && p.Category == "Meat/Polutry"
+            //         select p;
 
 
             // Indexed where
             // get products that are out of stock in the first 10 products
 
-            Result = ListGenerator.ProductsList.Where((p, index) => p.UnitsInStock == 0 && index < 10);
+            //Result = ListGenerator.ProductsList.Where((p, index) => p.UnitsInStock == 0 && index < 10);
             // indexed qhere valid only with fluent syntax and not query syntax
+            #endregion
+
+            #region Transformation [Projection] Operator [Select, SelectMany]
+
+            // FLuent Syntax
+            //select product name 
+
+            //var Result = ListGenerator.ProductsList.Select(p => p.ProductName);
+
+            // foreach(var item in Result)
+            // {
+            //    Console.WriteLine(item);
+            // }
+
+            // Query Syntax
+            //Result = from p in ListGenerator.ProductsList
+            //select p.ProductName;
+
+            // select customer name 
+            // Fluent Syntax
+            //Result = ListGenerator.CustomersList.Select(c => c.ContactName);
+
+            // Query Syntax
+            //Result = from c in ListGenerator.CustomersList
+            //select c.CustomerName;
+
+            // select custoemr orders 
+            // Fluent Syntax
+            //var Result = ListGenerator.CustomersList.SelectMany(c => c.Orders);
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //// Query Syntax
+            //Result = from c in ListGenerator.CustomersList
+            //         from o in c.Orders
+            //         select o;
+
+
+            //select product id and product name
+            // Fluent Syntax with annonymous type
+
+            //var result = ListGenerator.ProductsList.Select(p => new { p.ProductID, p.ProductName });
+            //// CLR will create class in runtime and override tostring
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //// Query Syntax
+            //result = from p in ListGenerator.ProductsList
+            //         select new { p.ProductID, p.ProductName };
+
+            // select product in stock and apply 10% discount on its price
+            // Fluent Syntax
+
+            //var result = ListGenerator.ProductsList.Where(p => p.UnitsInStock > 0)
+            //.Select(p => new { ID = p.ProductID, Name = p.ProductName, OldPrice = p.UnitPrice, DiscountedPrice = p.UnitPrice * 0.9m });
+
+            // query syntax
+            //result = from p in ListGenerator.ProductsList
+            //where p.UnitsInStock > 0
+            //select new { ID = p.ProductID, Name = p.ProductName, OldPrice = p.UnitPrice, DiscountedPrice = p.UnitPrice * 0.9m };
+
+            var Result = ListGenerator.ProductsList.Where(P => P.UnitsInStock > 0).Select((P, I) => new {Index = I, Name = P.ProductName});
+            // indexed select valid only with fluent syntax and not query syntax
             #endregion
         }
     }
