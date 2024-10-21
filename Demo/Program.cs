@@ -280,6 +280,53 @@ namespace Demo
             //var result = ListGenerator.ProductsList.Where(p => p.UnitsInStock == 0).Reverse();
 
             #endregion
+
+            #region ELements Operator - Immediate Execution [valid only with Fluent Syntax]
+
+            //var result = ListGenerator.ProductsList.First(p => p.Category == "Meat/Polutry"); // get the first element from the sequence
+
+            //result = ListGenerator.ProductsList.Last(p => p.Category == "Meat/Polutry"); // get the last element from the sequence
+
+            //Console.WriteLine(result?.ProductName ?? "Not Found");
+
+            List<Product> products = new List<Product>();
+
+            //var result = products.First(); // throw exception if the sequence is empty
+
+            //result = products.Last(); // throw exception if the sequence is empty
+
+            //result = products.FirstOrDefault(); // return null if the sequence is empty
+
+            //result = products.LastOrDefault(); // return null if the sequence is empty
+
+            //var result = ListGenerator.ProductsList.First(p => p.UnitsInStock == 0); // get the first element from the sequence
+
+            //result = ListGenerator.ProductsList.Last(p => p.UnitsInStock == 0); // get the last element from the sequence
+
+            //result = products.FirstOrDefault(p => p.UnitsInStock == 0); // return null if the sequence is empty
+
+            //result = products.LastOrDefault(p => p.UnitsInStock == 0); // return null if the sequence is empty
+
+            //Console.WriteLine(result?.ProductName ?? "Not Found");
+
+
+            //var result = ListGenerator.ProductsList.ElementAt(77); // get the element at the specified index
+            // throws exception if the index is out of range
+
+            //var result = ListGenerator.ProductsList.ElementAtOrDefault(77); // return null if the index is out of range
+
+            //Console.WriteLine(result?.ProductName ?? "Not Found");
+
+            //result = ListGenerator.ProductsList.Single(p => p.ProductID == 1); // get the element that satisfies the condition
+                                                                               // throws exception if the sequence contains more than one element that satisfies the condition
+
+
+            #endregion
+
+            #region Aggregation Operators [Count, Sum, Average, Min, Max] // immediate execution
+
+            #endregion
+
         }
     }
 }
