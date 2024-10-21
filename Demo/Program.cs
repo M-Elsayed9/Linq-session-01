@@ -1,7 +1,8 @@
 ﻿using Demo.Data;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http.Headers;
-
+using static Demo.ListGenerator;
 
 namespace Demo
 {
@@ -9,6 +10,7 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            #region Session 01
             #region ًWhat is LINQ
             // Language Integrated Query
             // LINQ +40 extension methods
@@ -290,7 +292,7 @@ namespace Demo
 
             //Console.WriteLine(result?.ProductName ?? "Not Found");
 
-            List<Product> products = new List<Product>();
+            //List<Product> products = new List<Product>();
 
             //var result = products.First(); // throw exception if the sequence is empty
 
@@ -346,16 +348,60 @@ namespace Demo
 
             //Console.WriteLine(result);
 
-            string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
+            //string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
 
-            var result = Names.Aggregate((a, b) =>$"{a}, {b}"); // get the aggregate of the sequence
+            //var result = Names.Aggregate((a, b) => $"{a}, {b}"); // get the aggregate of the sequence
 
 
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
 
 
             #endregion
 
+            #endregion
+
+            #region Session 02
+
+            #region Casting Operators - Immediate execution
+            //List<Product> result = ProductsList.Where(p => p.UnitsInStock == 0).ToList();
+            //Product[] products1 = ProductsList.Where(p => p.UnitsInStock == 0).ToArray();
+
+            //Dictionary<long, Product> products2 = ProductsList.Where(p => p.UnitsInStock == 0).ToDictionary(p => p.ProductID);
+
+            //foreach(var item in products2)
+            //{
+            //    Console.WriteLine(item.Key);
+            //    Console.WriteLine(item.Value);
+            //}
+
+            //Dictionary<long, string> products3 = ProductsList.Where(p => p.UnitsInStock == 0).ToDictionary(p => p.ProductID, p => p.ProductName);
+
+
+            //HashSet<Product> products4 = ProductsList.Where(p => p.UnitsInStock == 0).ToHashSet();
+
+            //ArrayList Result = new ArrayList()
+            //{
+            //    "Omar",
+            //    "Ahmed",
+            //    "Ali",
+            //    "Mohamed",
+            //    1,2,3
+            //};
+
+
+            //var result = Result.OfType<string>();
+            
+            //foreach (string item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            
+
+            #endregion
+
+
+            #endregion
         }
     }
 }
