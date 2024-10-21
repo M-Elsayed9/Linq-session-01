@@ -1,4 +1,5 @@
 ﻿using Demo.Data;
+using System.ComponentModel.DataAnnotations;
 using System.Net.Http.Headers;
 
 
@@ -318,12 +319,40 @@ namespace Demo
             //Console.WriteLine(result?.ProductName ?? "Not Found");
 
             //result = ListGenerator.ProductsList.Single(p => p.ProductID == 1); // get the element that satisfies the condition
-                                                                               // throws exception if the sequence contains more than one element that satisfies the condition
+            // throws exception if the sequence contains more than one element that satisfies the condition
 
 
             #endregion
 
             #region Aggregation Operators [Count, Sum, Average, Min, Max] // immediate execution
+            //var result = ListGenerator.ProductsList.Count(); // get the number of elements in the sequence
+            // LINQ operator
+            //result = ListGenerator.ProductsList.Count; // List property
+
+            //var result = ListGenerator.ProductsList.Max(); // Product must implment Icomparable  
+            //result = ListGenerator.ProductsList.Min(); // Product must implment Icomparable
+
+            //var result = ListGenerator.ProductsList.Max(P => P.UnitPrice); // get the maximum value of the specified property
+
+            //var MinLength = ListGenerator.ProductsList.Min(P => P.ProductName.Length);
+            //Console.WriteLine(MinLength);
+            //var result = (from p in ListGenerator.ProductsList
+            //              where p.ProductName.Length == MinLength
+            //              select p).FirstOrDefault();
+
+            //var result = ListGenerator.ProductsList.Sum(P => P.UnitPrice); // get the sum of the specified property
+
+            //var result = ListGenerator.ProductsList.Average(P => P.UnitPrice); // get the average of the specified property
+
+            //Console.WriteLine(result);
+
+            string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
+
+            var result = Names.Aggregate((a, b) =>$"{a}, {b}"); // get the aggregate of the sequence
+
+
+            Console.WriteLine(result);
+
 
             #endregion
 
