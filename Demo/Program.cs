@@ -390,13 +390,34 @@ namespace Demo
 
 
             //var result = Result.OfType<string>();
-            
+
             //foreach (string item in result)
             //{
             //    Console.WriteLine(item);
             //}
 
-            
+
+
+            #endregion
+
+            #region Generation Operators - Deffered Execution 
+
+            // valid only with fluent syntax
+            // the only way to call them is as static methods from class enumerable
+
+            //var Result = Enumerable.Range(1, 10);
+
+            //Result = Enumerable.Repeat(2, 100);
+
+            var Result = Enumerable.Repeat(new Product(), 10);
+
+            var arrayProducts = Enumerable.Empty<Product>().ToArray(); // empty array
+
+            foreach (var item in Result)
+            {
+                Console.WriteLine(item);
+            }
+
 
             #endregion
 
