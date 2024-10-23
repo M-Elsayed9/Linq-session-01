@@ -466,24 +466,35 @@ namespace Demo
 
             #endregion
 
-            #region Quantifier Operators - Return boolean
+            #region Quantifier Operators - Return boolean - Deffered Execution
 
-            bool result = ProductsList.Any();
-            // if sequence is empty return false
+            //bool result = ProductsList.Any();
+            //// if sequence is empty return false
 
-            result = ProductsList.Any(p => p.UnitsInStock == 0); // if any element satisfies the condition return true
+            //result = ProductsList.Any(p => p.UnitsInStock == 0); // if any element satisfies the condition return true
 
-            result = ProductsList.All(p => p.UnitsInStock > 1000);
+            //result = ProductsList.All(p => p.UnitsInStock > 1000);
 
-            result = ProductsList.Contains(ProductsList[0]); // if the sequence contains the specified element return true
+            //result = ProductsList.Contains(ProductsList[0]); // if the sequence contains the specified element return true
 
-            var Seq01 = Enumerable.Range(0, 100); // from 0 to 99
-            var Seq02 = Enumerable.Range(0, 100); // from 50 to 149
+            //var Seq01 = Enumerable.Range(0, 100); // from 0 to 99
+            //var Seq02 = Enumerable.Range(0, 100); // from 50 to 149
 
-            result = Seq01.SequenceEqual(Seq02); // if the two sequences are equal return true
+            //result = Seq01.SequenceEqual(Seq02); // if the two sequences are equal return true
 
+            #endregion
 
+            #region Zip Operator
 
+            //string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
+
+            //int[] Numbers = Enumerable.Range(1, 10).ToArray();
+
+            //char[] chars = { 'A', 'B', 'C', 'D', 'E' };
+
+            ////var Result = Names.Zip(Numbers, (Name, Number) => $"{Name} {Number}");
+
+            //var Result = Names.Zip(Numbers, chars);
             #endregion
 
             #endregion
