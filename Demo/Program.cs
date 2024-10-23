@@ -1,7 +1,10 @@
 ﻿using Demo.Data;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http.Headers;
-
+using System.Numerics;
+using static Demo.ListGenerator;
+using System.Text.RegularExpressions;
 
 namespace Demo
 {
@@ -9,6 +12,7 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            #region Session 01
             #region ًWhat is LINQ
             // Language Integrated Query
             // LINQ +40 extension methods
@@ -290,7 +294,7 @@ namespace Demo
 
             //Console.WriteLine(result?.ProductName ?? "Not Found");
 
-            List<Product> products = new List<Product>();
+            //List<Product> products = new List<Product>();
 
             //var result = products.First(); // throw exception if the sequence is empty
 
@@ -346,16 +350,277 @@ namespace Demo
 
             //Console.WriteLine(result);
 
-            string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
+            //string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
 
-            var result = Names.Aggregate((a, b) =>$"{a}, {b}"); // get the aggregate of the sequence
+            //var result = Names.Aggregate((a, b) => $"{a}, {b}"); // get the aggregate of the sequence
 
 
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
 
 
             #endregion
 
+            #endregion
+
+            #region Session 02
+
+            #region Casting Operators - Immediate execution
+            //List<Product> result = ProductsList.Where(p => p.UnitsInStock == 0).ToList();
+            //Product[] products1 = ProductsList.Where(p => p.UnitsInStock == 0).ToArray();
+
+            //Dictionary<long, Product> products2 = ProductsList.Where(p => p.UnitsInStock == 0).ToDictionary(p => p.ProductID);
+
+            //foreach(var item in products2)
+            //{
+            //    Console.WriteLine(item.Key);
+            //    Console.WriteLine(item.Value);
+            //}
+
+            //Dictionary<long, string> products3 = ProductsList.Where(p => p.UnitsInStock == 0).ToDictionary(p => p.ProductID, p => p.ProductName);
+
+
+            //HashSet<Product> products4 = ProductsList.Where(p => p.UnitsInStock == 0).ToHashSet();
+
+            //ArrayList Result = new ArrayList()
+            //{
+            //    "Omar",
+            //    "Ahmed",
+            //    "Ali",
+            //    "Mohamed",
+            //    1,2,3
+            //};
+
+
+            //var result = Result.OfType<string>();
+
+            //foreach (string item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            #endregion
+
+            #region Generation Operators - Deffered Execution 
+
+            // valid only with fluent syntax
+            // the only way to call them is as static methods from class enumerable
+
+            //var Result = Enumerable.Range(1, 10);
+
+            //Result = Enumerable.Repeat(2, 100);
+
+            //var Result = Enumerable.Repeat(new Product(), 10);
+
+            //var arrayProducts = Enumerable.Empty<Product>().ToArray(); // empty array
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            #endregion
+
+            #region Set Operators [Union Family] - Deffered Execution
+
+            //var Seq01 = Enumerable.Range(0, 100); // from 0 to 99
+
+            //var Seq02 = Enumerable.Range(50, 100); // from 50 to 149
+
+            //var Result = Seq01.Union(Seq02); // get the union of the two sequences
+            //// remove the duplicates
+
+            ////var Result = Seq01.Concat(Seq02); // get the concatenation of the two sequences
+            //foreach (var item in Seq01) {
+            //    Console.WriteLine(item);
+            //}
+
+            //foreach (var item in Seq02)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Result.Distinct(); // get the distinct elements from the sequence
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Seq01.Intersect(Seq02); // get the intersection of the two sequences
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Seq01.Except(Seq02); // get the difference between the two sequences
+
+
+
+            #endregion
+
+            #region Quantifier Operators - Return boolean - Deffered Execution
+
+            //bool result = ProductsList.Any();
+            //// if sequence is empty return false
+
+            //result = ProductsList.Any(p => p.UnitsInStock == 0); // if any element satisfies the condition return true
+
+            //result = ProductsList.All(p => p.UnitsInStock > 1000);
+
+            //result = ProductsList.Contains(ProductsList[0]); // if the sequence contains the specified element return true
+
+            //var Seq01 = Enumerable.Range(0, 100); // from 0 to 99
+            //var Seq02 = Enumerable.Range(0, 100); // from 50 to 149
+
+            //result = Seq01.SequenceEqual(Seq02); // if the two sequences are equal return true
+
+            #endregion
+
+            #region Zip Operator
+
+            //string[] Names = { "Aya", "Omar", "Amr", "Mohamed" };
+
+            //int[] Numbers = Enumerable.Range(1, 10).ToArray();
+
+            //char[] chars = { 'A', 'B', 'C', 'D', 'E' };
+
+            ////var Result = Names.Zip(Numbers, (Name, Number) => $"{Name} {Number}");
+
+            //var Result = Names.Zip(Numbers, chars);
+            #endregion
+
+            #region Grouping Operator
+
+            // get products grouped by category
+            // query syntax
+
+            //var Result = from p in ProductsList
+            //             group p by p.Category;
+
+            //foreach (var category in Result)
+            //{
+            //    Console.WriteLine(category.Key); // Name Of category
+            //    foreach (var product in category)
+            //        Console.WriteLine($"             {product.ProductName}");
+            //}
+
+            //// fluent syntax
+            //Result = ProductsList.GroupBy(p => p.Category);
+
+
+            //// get products in stock grouped by category 
+            //Result = ProductsList.Where(p => p.UnitsInStock > 0).GroupBy(p => p.Category);
+
+            //Result = from p in ProductsList
+            //         where p.UnitsInStock > 0
+            //         group p by p.Category;
+
+            //// get products in stock grouped by category that contains more than 10 product
+            ////query syntax
+            //Result = from p in ProductsList
+            //         where p.UnitsInStock > 0
+            //         group p by p.Category into g
+            //         where g.Count() > 10
+            //         select g;
+
+            //// fluent syntax
+            //Result = ProductsList
+            //    .Where(p => p.UnitsInStock > 0)
+            //    .GroupBy(p => p.Category)
+            //    .Where(g => g.Count() > 10);
+
+
+            // get category name of products in stock tht contains
+            // more than 10 products and number of products in each category
+            //fluent syntax
+            // var Result = ProductsList
+            //    .Where(p => p.UnitsInStock > 0)
+            //    .GroupBy(p => p.Category)
+            //    .Where(g => g.Count() > 10)
+            //    .Select(g => new { Category = g.Key, Count = g.Count() });
+
+            //// query syntax
+
+            //Result = from p in ProductsList
+            //         where p.UnitsInStock > 0
+            //         group p by p.Category
+            //         into c
+            //         where c.Count() > 10
+            //         select new { Category = c.Key, Count = c.Count() };
+
+
+            #endregion
+
+            #region Partitioning Operators
+
+            // get the first 10 products
+            // fluent syntax
+            //var Result = ProductsList.Take(10);
+
+            //var result = ProductsList.Where(p => p.UnitsInStock == 0).Take(10); // get the first 10 products that are out of stock
+
+            //result = ProductsList.Where(p => p.UnitsInStock == 0).TakeLast(10); //  get the last 10 products that are out of stock
+
+            //result = ProductsList.Skip(5); // skip the first 5 elements
+
+
+            // query syntax
+            //var Result = (from p in ProductsList
+            //          select p).Take(10);
+
+            //int[] Numbers = { 5, 4, 1, 9, 8, 10, 11, 12, 3};
+
+            //var Result = Numbers.TakeWhile(n => n > 9);
+
+            //Result = Numbers.TakeWhile((Num, I) => Num > 9 && I < 5);
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Numbers.SkipWhile(n => n > 9);
+
+            #endregion
+
+            #region Let And Into [Valid Only with query syntax]
+
+            //List<string> Names = new List<string> { "Aya", "Omar", "Amr", "Mohamed" };
+            //// remove vowel letters from names 
+
+            //var Result = from N in Names
+            //             select Regex.Replace(N, "[aeiouAEIOU]", string.Empty)
+            //             into NoVowelNames
+            //             where NoVowelNames.Length > 3
+            //             select NoVowelNames;
+
+            //// Into => Restart Query With Introducing A new Range
+
+            //// Let => Create A new Range with adding new range to the current range
+
+            //Result = from n in Names
+            //         let NoVowelNames = Regex.Replace(n, "[aeiouAEIOU]", string.Empty)
+            //         where NoVowelNames.Length > 3
+            //         select NoVowelNames;
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            #endregion
+            #endregion
         }
     }
 }
