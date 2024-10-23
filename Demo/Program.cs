@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.Http.Headers;
 using System.Numerics;
 using static Demo.ListGenerator;
+using System.Text.RegularExpressions;
 
 namespace Demo
 {
@@ -589,13 +590,36 @@ namespace Demo
 
             //Result = Numbers.SkipWhile(n => n > 9);
 
+            #endregion
 
+            #region Let And Into [Valid Only with query syntax]
+
+            //List<string> Names = new List<string> { "Aya", "Omar", "Amr", "Mohamed" };
+            //// remove vowel letters from names 
+
+            //var Result = from N in Names
+            //             select Regex.Replace(N, "[aeiouAEIOU]", string.Empty)
+            //             into NoVowelNames
+            //             where NoVowelNames.Length > 3
+            //             select NoVowelNames;
+
+            //// Into => Restart Query With Introducing A new Range
+
+            //// Let => Create A new Range with adding new range to the current range
+
+            //Result = from n in Names
+            //         let NoVowelNames = Regex.Replace(n, "[aeiouAEIOU]", string.Empty)
+            //         where NoVowelNames.Length > 3
+            //         select NoVowelNames;
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
 
 
             #endregion
-
-
             #endregion
         }
     }
