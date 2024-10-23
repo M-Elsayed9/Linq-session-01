@@ -559,6 +559,43 @@ namespace Demo
 
             #endregion
 
+            #region Partitioning Operators
+
+            // get the first 10 products
+            // fluent syntax
+            //var Result = ProductsList.Take(10);
+
+            //var result = ProductsList.Where(p => p.UnitsInStock == 0).Take(10); // get the first 10 products that are out of stock
+
+            //result = ProductsList.Where(p => p.UnitsInStock == 0).TakeLast(10); //  get the last 10 products that are out of stock
+
+            //result = ProductsList.Skip(5); // skip the first 5 elements
+
+
+            // query syntax
+            //var Result = (from p in ProductsList
+            //          select p).Take(10);
+
+            //int[] Numbers = { 5, 4, 1, 9, 8, 10, 11, 12, 3};
+
+            //var Result = Numbers.TakeWhile(n => n > 9);
+
+            //Result = Numbers.TakeWhile((Num, I) => Num > 9 && I < 5);
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Numbers.SkipWhile(n => n > 9);
+
+
+
+
+
+            #endregion
+
+
             #endregion
         }
     }
