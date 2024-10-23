@@ -2,6 +2,7 @@
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http.Headers;
+using System.Numerics;
 using static Demo.ListGenerator;
 
 namespace Demo
@@ -423,46 +424,66 @@ namespace Demo
 
             #region Set Operators [Union Family] - Deffered Execution
 
+            //var Seq01 = Enumerable.Range(0, 100); // from 0 to 99
+
+            //var Seq02 = Enumerable.Range(50, 100); // from 50 to 149
+
+            //var Result = Seq01.Union(Seq02); // get the union of the two sequences
+            //// remove the duplicates
+
+            ////var Result = Seq01.Concat(Seq02); // get the concatenation of the two sequences
+            //foreach (var item in Seq01) {
+            //    Console.WriteLine(item);
+            //}
+
+            //foreach (var item in Seq02)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Result.Distinct(); // get the distinct elements from the sequence
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Seq01.Intersect(Seq02); // get the intersection of the two sequences
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Result = Seq01.Except(Seq02); // get the difference between the two sequences
+
+
+
+            #endregion
+
+            #region Quantifier Operators - Return boolean
+
+            bool result = ProductsList.Any();
+            // if sequence is empty return false
+
+            result = ProductsList.Any(p => p.UnitsInStock == 0); // if any element satisfies the condition return true
+
+            result = ProductsList.All(p => p.UnitsInStock > 1000);
+
+            result = ProductsList.Contains(ProductsList[0]); // if the sequence contains the specified element return true
+
             var Seq01 = Enumerable.Range(0, 100); // from 0 to 99
+            var Seq02 = Enumerable.Range(0, 100); // from 50 to 149
 
-            var Seq02 = Enumerable.Range(50, 100); // from 50 to 149
+            result = Seq01.SequenceEqual(Seq02); // if the two sequences are equal return true
 
-            var Result = Seq01.Union(Seq02); // get the union of the two sequences
-            // remove the duplicates
 
-            //var Result = Seq01.Concat(Seq02); // get the concatenation of the two sequences
-            foreach (var item in Seq01) {
-                Console.WriteLine(item);
-            }
 
-            foreach (var item in Seq02)
-            {
-                Console.WriteLine(item);
-            }
-
-            foreach (var item in Result)
-            {
-                Console.WriteLine(item);
-            }
-
-            Result = Result.Distinct(); // get the distinct elements from the sequence
-
-            foreach (var item in Result)
-            {
-                Console.WriteLine(item);
-            }
-
-            Result = Seq01.Intersect(Seq02); // get the intersection of the two sequences
-
-            foreach (var item in Result)
-            {
-                Console.WriteLine(item);
-            }
-
-            Result = Seq01.Except(Seq02); // get the difference between the two sequences
-            
-            
-            
             #endregion
 
             #endregion
