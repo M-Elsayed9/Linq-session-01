@@ -497,6 +497,68 @@ namespace Demo
             //var Result = Names.Zip(Numbers, chars);
             #endregion
 
+            #region Grouping Operator
+
+            // get products grouped by category
+            // query syntax
+
+            //var Result = from p in ProductsList
+            //             group p by p.Category;
+
+            //foreach (var category in Result)
+            //{
+            //    Console.WriteLine(category.Key); // Name Of category
+            //    foreach (var product in category)
+            //        Console.WriteLine($"             {product.ProductName}");
+            //}
+
+            //// fluent syntax
+            //Result = ProductsList.GroupBy(p => p.Category);
+
+
+            //// get products in stock grouped by category 
+            //Result = ProductsList.Where(p => p.UnitsInStock > 0).GroupBy(p => p.Category);
+
+            //Result = from p in ProductsList
+            //         where p.UnitsInStock > 0
+            //         group p by p.Category;
+
+            //// get products in stock grouped by category that contains more than 10 product
+            ////query syntax
+            //Result = from p in ProductsList
+            //         where p.UnitsInStock > 0
+            //         group p by p.Category into g
+            //         where g.Count() > 10
+            //         select g;
+
+            //// fluent syntax
+            //Result = ProductsList
+            //    .Where(p => p.UnitsInStock > 0)
+            //    .GroupBy(p => p.Category)
+            //    .Where(g => g.Count() > 10);
+
+
+            // get category name of products in stock tht contains
+            // more than 10 products and number of products in each category
+            //fluent syntax
+            // var Result = ProductsList
+            //    .Where(p => p.UnitsInStock > 0)
+            //    .GroupBy(p => p.Category)
+            //    .Where(g => g.Count() > 10)
+            //    .Select(g => new { Category = g.Key, Count = g.Count() });
+
+            //// query syntax
+
+            //Result = from p in ProductsList
+            //         where p.UnitsInStock > 0
+            //         group p by p.Category
+            //         into c
+            //         where c.Count() > 10
+            //         select new { Category = c.Key, Count = c.Count() };
+
+
+            #endregion
+
             #endregion
         }
     }
