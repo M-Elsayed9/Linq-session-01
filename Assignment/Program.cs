@@ -193,8 +193,66 @@ namespace Assignment
 
             #endregion
 
+            #region LINQ – Transformation Operators
+
+            //1.Return a sequence of just the names of a list of products.
+
+            //var result = ProductsList.Select(p => p.ProductName);
+
+            // 2. Produce a sequence of the uppercase and lowercase versions of each word in the original array (Anonymous Types).
+
+            //string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+
+            //var result = words.Select(w => new { Upper = w.ToUpper(), Lower = w.ToLower() });
+
+            // 3. Produce a sequence containing some properties of Products, including
+            // UnitPrice which is renamed to Price in the resulting type.
+
+            //var result = ProductsList.Select(p => new { p.ProductName, Price = p.UnitPrice });
+
+            // 4. Determine if the value of int in an array matches their position in the array.
+
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var result = Arr.Select((n, i) =>  n == i).ToArray();
+
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    Console.WriteLine($"{Arr[i]}: {result[i]}");
+            //}
+
+            //5.Returns all pairs of numbers from both arrays such that the number from
+            //numbersA is less than the number from numbersB.
+            //int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            //int[] numbersB = { 1, 3, 5, 7, 8 };
+
+            //var result = numbersA.SelectMany(b => numbersB, (a, b) => new { a, b }).Where(p => p.a < p.b).ToList();
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"A: {item.a} is less than B: {item.b}");
+            //}
+
+            //6.Select all orders where the order total is less than 500.00.
+
+            //var result = CustomersList.SelectMany(c => c.Orders, (c, o) => new { c.CustomerID, o.OrderID, o.Total }).Where(o => o.Total < 500).ToList();
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"Customer ID: {item.CustomerID} Order ID: {item.OrderID} Total: {item.Total}");
+            //}
+
+            //7. Select all orders where the order was made in 1998 or later.
+
+            //var result = CustomersList.SelectMany(c => c.Orders, (c, o) => new { c.CustomerID, o.OrderID, o.OrderDate }).Where(o => o.OrderDate.Year >= 1998).ToList();
+            
+            #endregion
+
             #region Set Operators
             //1.Find the unique Category names from Product List
+
+            var result = ProductsList.Select(p => p.Category).Distinct().ToList();
+
             //2.Produce a Sequence containing the unique first letter from both product and customer names.
             //3.Create one sequence that contains the common first letter from both product and customer names.
             //4.Create one sequence that contains the first letters of product names that are not also first letters of customer names.
