@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlTypes;
 using static Assignment.ListGenerator;
+using System.Collections;
+using System.Security.Cryptography;
 
 
 
@@ -55,6 +57,93 @@ namespace Assignment
 
             #endregion
 
+            #region LINQ - Aggregate Operators
+
+            //1.Uses Count to get the number of odd numbers in the array
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var result = Arr.Count(N => N % 2 == 1);
+
+            //2.Return a list of customers and how many orders each has.
+
+            //var Result = CustomersList.Select(C => new { CustomerName = C.CustomerName, OrderCount = C.Orders.Count() });
+
+            //3.Return a list of categories and how many products each has
+
+            //var result = ProductsList.GroupBy(P => P.Category)
+            //    .Select(P => new { CategoryName = P.Key, ProductCount = P.Count() }).ToList();
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"Category Name: {item.CategoryName} Product Count: {item.ProductCount}");
+            //}
+
+
+            //4.Get the total of the numbers in an array.
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //int result = Arr.Sum();
+
+            //5.Get the total number of characters of all words in dictionary_english.txt(Read dictionary_english.txt into Array of String First).
+
+            //var words = File.ReadAllLines("dictionary_english.txt");
+
+            //var result = words.Sum(w => w.Length);
+
+            //Console.WriteLine(result);
+
+            //6.Get the length of the shortest word in dictionary_english.txt(Read dictionary_english.txt into Array of String First).
+
+            //var result = words.Min(w => w.Length);
+
+            //7.Get the length of the longest word in dictionary_english.txt(Read dictionary_english.txt into Array of String First).
+
+            //var result = words.Max(w => w.Length);
+
+            //8.Get the average length of the words in dictionary_english.txt(Read dictionary_english.txt into Array of String First).
+
+            //var result = words.Average(w => w.Length);
+
+            //9.Get the total units in stock for each product category.
+
+            //var result = ProductsList.GroupBy(P => P.Category)
+            //    .Select(P => new { CategoryName = P.Key, TotalUnitsInStock = P.Sum(P => P.UnitsInStock) }).ToList();
+
+            //10.Get the cheapest price among each category's products
+
+            //var result = ProductsList.GroupBy(p => p.Category)
+            //    .Select(p => new { CategoryName = p.Key, CheapestPrice = p.Min(p => p.UnitPrice) }).ToList();
+
+            //11.Get the products with the cheapest price in each category(Use Let)
+
+            //var result = from p in ProductsList
+            //             group p by p.Category
+            //             into pc
+            //             let minPrice = pc.Min(p => p.UnitPrice)
+            //             select new { CategoryName = pc.Key, CheapestProducts = pc.Where(p => p.UnitPrice == minPrice) };
+
+
+            //12.Get the most expensive price among each category's products.
+
+            //var result = ProductsList.GroupBy(p => p.Category)
+            //    .Select(p => new { Category = p.Key, MaxPrice = p.Max(p => p.UnitPrice) });
+
+            //13.Get the products with the most expensive price in each category.
+
+            //var result = from p in ProductsList
+            //             group p by p.Category
+            //             into pc
+            //             let maxPrice = pc.Max(p => p.UnitPrice)
+            //             select new { CategoryName = pc.Key, MostExpensiveProducts = pc.Where(p => p.UnitPrice == maxPrice) };
+
+
+            //14.Get the average price of each category's products.
+
+            //var result = ProductsList.GroupBy(p => p.Category)
+            //    .Select(p => new { Category = p.Key, AveragePrice = p.Average(p => p.UnitPrice) });
+
+            #endregion
+
             #region Set Operators
             //1.Find the unique Category names from Product List
             //2.Produce a Sequence containing the unique first letter from both product and customer names.
@@ -94,5 +183,5 @@ namespace Assignment
 
             #endregion
         }
-        }
+    }
 }
