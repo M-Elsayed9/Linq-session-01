@@ -40,6 +40,21 @@ namespace Assignment
             //}
             #endregion
 
+            #region LINQ - Element Operators
+
+            //1.Get first Product out of Stock
+            //var Result = ProductsList.FirstOrDefault(p => p.UnitsInStock == 0);
+
+            //2.Return the first product whose Price > 1000, unless there is no match, in which case null is returned.
+            //var Result = ProductsList.FirstOrDefault(p => p.UnitsInStock > 1000);
+
+            //3.Retrieve the second number greater than 5
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //var Result = Arr.Where(X => X > 5).ElementAt(1);
+
+            #endregion
+
             #region Set Operators
             //1.Find the unique Category names from Product List
             //2.Produce a Sequence containing the unique first letter from both product and customer names.
@@ -79,5 +94,5 @@ namespace Assignment
 
             #endregion
         }
-    }
+        }
 }
