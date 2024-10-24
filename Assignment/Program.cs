@@ -20,6 +20,14 @@ using System.Security.Cryptography;
 namespace Assignment
     
 {
+    class CustomComparer : IComparer<string>
+    {
+        public int Compare(string? x, string? y)
+        {
+            return string.Compare(x, y, true);
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -141,6 +149,47 @@ namespace Assignment
 
             //var result = ProductsList.GroupBy(p => p.Category)
             //    .Select(p => new { Category = p.Key, AveragePrice = p.Average(p => p.UnitPrice) });
+
+            #endregion
+
+            #region LINQ - Ordering Operators
+
+            //1. Sort a list of products by name
+
+            //var result = ProductsList.OrderBy(p => p.ProductName).ToList();
+
+            //2. Uses a custom comparer to do a case-insensitive sort of the words in an array.
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            //var result = Arr.OrderBy(a => a, new CustomComparer()).ToList();
+
+            //3. Sort a list of products by units in stock from highest to lowest.
+
+            //var result = ProductsList.OrderByDescending(p => p.UnitsInStock).ToList();
+
+            //4. Sort a list of digits, first by length of their name, and then alphabetically by the name itself.
+            //string[] Arr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+
+            //var result = Arr.OrderBy(x => x.Length).ThenBy(x => x).ToList();
+
+            //5. Sort first by-word length and then by a case-insensitive sort of the words in an array.
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            //var result = Arr.OrderBy(x => x.Length).ThenBy(x => x, StringComparer.OrdinalIgnoreCase).ToList();
+
+            //6. Sort a list of products, first by category, and then by unit price, from highest to lowest.
+
+            //var result = ProductsList.OrderBy(p => p.Category).ThenByDescending(p => p.UnitPrice).ToList();
+
+            //7. Sort first by-word length and then by a case-insensitive descending sort of the words in an array.
+            //string[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+
+            //var result = Arr.OrderBy(x => x.Length).ThenByDescending(x => x, StringComparer.OrdinalIgnoreCase);
+
+            //8. Create a list of all digits in the array whose second letter is 'i' that is reversed from the order in the original array.
+            //string[] Arr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+
+            //var result = Arr.Where(x => x[1] == 'i').Reverse().ToList();
 
             #endregion
 
