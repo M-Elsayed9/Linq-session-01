@@ -14,12 +14,34 @@ using System.Data.SqlTypes;
 using static Assignment.ListGenerator;
 using System.Collections;
 using System.Security.Cryptography;
+using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 
 
 
 namespace Assignment
     
 {
+
+    class EqualityComparer : IEqualityComparer<string>
+    {
+        public bool Equals(string? x, string? y)
+        {
+            return Sort(x) == Sort(y);
+        }
+
+        public int GetHashCode([DisallowNull] string obj)
+        {
+            return Sort(obj).GetHashCode();
+        }
+
+        public string Sort(string? x)
+        {
+            var chars = x.ToCharArray();
+            Array.Sort(chars);
+            return new string(chars);
+        }
+    }
     class CustomComparer : IComparer<string>
     {
         public int Compare(string? x, string? y)
@@ -322,9 +344,60 @@ namespace Assignment
 
             #region LINQ Grouping Operators
 
+            // 1.Use group by to partition a list of numbers by their remainder when divided by 5
+            //List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
+            //var Result = numbers.GroupBy(n => n % 5).ToList();
 
 
-            #endregion
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine($"Numbers with Remainder of {item.Key} when devided by 5:");
+            //    foreach (var item1 in item)
+            //    {
+            //        Console.WriteLine(item1);
+            //    }
+            //}
+
+            // 2.Uses group by to partition a list of words by their first letter. Use dictionary_english.txt for Input
+
+            //var words = File.ReadAllLines("dictionary_english.txt");
+
+            //var Result = words.GroupBy(w => w[0]);
+
+
+
+            // 3. Use Group By with a custom comparer that matches words that are consists of the same Characters Together
+
+            //string[] Arr = { "from", "salt", "earn", " last", "near", "form" };
+
+            //var Result = Arr.GroupBy(w => w.Trim(), new EqualityComparer());
+
+            //foreach (var item in Result)
+            //{
+            //    foreach (var item1 in item)
+            //    {
+            //        Console.WriteLine(item1);
+            //    }
+            //    Console.WriteLine("...............");
+            //}
+
+
+
+            //Console.WriteLine(Result);
+
+            //foreach (var Unit in Result)
+            //{
+            //    Console.WriteLine(Unit);
+            //    foreach (var UnitPrice in Unit)
+            //    {
+            //        Console.WriteLine(UnitPrice);
+            //    }
+            //}
+
         }
+
+        #endregion
+    
     }
 }
