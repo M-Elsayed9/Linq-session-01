@@ -278,23 +278,41 @@ namespace Assignment
             #region Partitioning Operators
 
             //1.Get the first 3 orders from customers in Washington
+
+            //var Result = CustomersList.Where(c => c.Region == "WA").SelectMany(o => o.Orders).Take(3);
+
             //2.Get all but the first 2 orders from customers in Washington.
+
+            //var Result = CustomersList.Where(c => c.Region == "WA").SelectMany(o => o.Orders).Skip(2);
+
             //3.Return elements starting from the beginning of the array until a number is hit that is less than its position in the array.
             //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
+            //var Result = numbers.TakeWhile((n, i) => n > i).ToList();
 
             //4.Get the elements of the array starting from the first element divisible by 3.
             //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
+            //var Result = numbers.SkipWhile(n => n % 3 != 0).ToList();
+
             //5.Get the elements of the array starting from the first element less than its position.
             //int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
+            //var Result = numbers.SkipWhile((n, i) => n > i).ToList();
 
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
             #endregion
 
             #region LINQ Quanitifiers
             //1.Determine if any of the words in dictionary_english.txt(Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
+
+
             //2.Return a grouped a list of products only for categories that have at least one product that is out of stock.
+
+
             //3.Return a grouped a list of products only for categories that have all of their products in stock.
 
             #endregion
