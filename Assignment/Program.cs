@@ -309,12 +309,15 @@ namespace Assignment
             #region LINQ Quanitifiers
             //1.Determine if any of the words in dictionary_english.txt(Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
 
+            //var result = File.ReadAllLines("dictionary_english.txt").Any(w => w.Contains("ei"));
 
             //2.Return a grouped a list of products only for categories that have at least one product that is out of stock.
 
+            //var result = ProductsList.GroupBy(p => p.Category).Where(p => p.Any(p => p.UnitsInStock >= 1)).ToList();
 
             //3.Return a grouped a list of products only for categories that have all of their products in stock.
 
+            //var result = ProductsList.GroupBy(p => p.Category).Where(p => p.All(p => p.UnitsInStock >= 1)).ToList();
             #endregion
 
             #region LINQ Grouping Operators
